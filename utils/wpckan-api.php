@@ -12,7 +12,7 @@
 
   function wpckan_api_package_show($ckan_domain, $id)
   {
-      $ckanapi_url = $ckan_domain.'/api/3/action/package_show?id='.$id;
+      $ckanapi_url = $ckan_domain.'/api/3/action/package_show?id='.$id.'&include_tracking=true';
 
       $json = wpckan_get_or_cache($ckanapi_url, $id);
 
