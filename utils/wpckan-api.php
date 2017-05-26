@@ -13,7 +13,7 @@
   function wpckan_api_package_show($ckan_domain, $id)
   {
       $ckanapi_url = $ckan_domain.'/api/3/action/package_show?id='.$id.'&include_tracking=true';
-
+      wpckan_log("API Call: ". $ckanapi_url);
       $json = wpckan_get_or_cache($ckanapi_url, $id);
 
       if ($json === false) {
@@ -32,6 +32,7 @@
   {
       $query = '?'.compose_solr_query_from_attrs($attrs);
       $ckanapi_url = $ckan_domain.'/api/3/action/package_search'.$query;
+      wpckan_log("API Call: ". $ckanapi_url);
       $json = wpckan_get_or_cache($ckanapi_url, $query);
 
       if ($json === false) {
@@ -51,6 +52,7 @@
 				$attrs["page"] = $iteration + 1;
 				$query = '?'.compose_solr_query_from_attrs($attrs);
 				$ckanapi_url = $ckan_domain.'/api/3/action/package_search'.$query;
+                wpckan_log("API Call: ". $ckanapi_url);
 
 	      $json = wpckan_get_or_cache($ckanapi_url, $query);
 				if ($json !== false) {

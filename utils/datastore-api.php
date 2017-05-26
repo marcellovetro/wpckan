@@ -28,6 +28,7 @@
  function wpckan_get_datastore_resources_filter($ckan_domain, $resource_id, $key, $value)
  {
      $datastore_url = $ckan_domain.'/api/3/action/datastore_search?resource_id='.$resource_id.'&limit=9999&filters={"'.$key.'":"'.$value.'"}';
+     wpckan_log("API Call: ". $datastore_url);
      $json = wpckan_get_or_cache($datastore_url,$resource_id. $key . $value);
 
      if ($json === false) {
@@ -45,6 +46,7 @@
  function wpckan_get_datastore_resource($ckan_domain, $resource_id)
  {
      $datastore_url = $ckan_domain.'/api/3/action/datastore_search?resource_id='.$resource_id.'&limit=9999';
+     wpckan_log("API Call: ". $datastore_url);
      $json = wpckan_get_or_cache($datastore_url,$resource_id);
 
      if ($json === false) {
